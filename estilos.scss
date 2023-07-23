@@ -1,0 +1,175 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+	scroll-behavior: smooth;
+}
+
+html, body{
+    width: 100%;
+    overflow-x: clip !important;
+}
+
+$color_1: white;
+$color_2: black;
+$color-letra: #fccabd;
+$background-color_1: #D96F66;
+
+.grid-container{
+    width: 100%;
+    height: 246%;
+    margin: 0 auto;
+    background-color: $background-color_1;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 4fr 0.5fr 3fr 1fr ;
+
+    grid-template-areas:'Header Header Header Header'
+						'Contenido2 Contenido2 Contenido2 Contenido2'
+                        'article article article article'
+                        'Footer Footer Footer Footer';
+}
+
+@media (max-width: 550px) {
+    .grid-container{
+        grid-template-columns: 1fr;
+        grid-template-rows: 4fr 0.5fr 1fr 1fr;
+
+        grid-template-areas:'Header'
+                            'Contenido2'
+                            'article'
+                            'Footer';
+    }
+
+	.navBar{
+        ul{
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+        }
+    }
+}
+.Header{
+    grid-area: Header;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.5)),url('https://ergasiatora.gr/wp-content/uploads/2021/03/zaxaroplastes.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.navBar {
+	width: 90%;
+	margin: auto;
+	padding: 35px 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	ul {
+		li {
+			list-style: none;
+			display: inline-block;
+			margin: 0 20px;
+			position: relative;
+			a {
+				text-decoration: none;
+				color: $color_1;
+				text-transform: uppercase;
+				font-size: 100%;
+			}
+			&::after {
+				content: ' ';
+				height: 3px;
+				width: 0;
+				background-color: $background-color_1;
+				position: absolute;
+				left: 0;
+				bottom: 0;
+				transition: 200ms;
+			}
+			&:hover {
+				&::after {
+					width: 100%;
+				}
+			}
+		}
+	}
+}
+.logo {
+	width: 140px;
+	cursor: pointer;
+}
+.contenido {
+	width: 100%;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	text-align: center;
+	color: $color_1;
+	h1 {
+		font-size: 150%;
+		margin-top: 4%;
+	}
+}
+.fondo {
+	background-color: $background-color_1;
+}
+.Contenido2 {
+	grid-area: Contenido2;
+	margin-top: 26px;
+	text-align: center;
+	h3{
+		font-size: 180%;
+        text-align:center;
+        margin: 10px 0px;
+		color: $color-letra;
+	}
+}
+article {
+	grid-area: article;
+	display: flex;
+	margin-top: 3%;
+	margin-left: 10%;
+	margin-right: 10%;
+	width: 80%;
+	height: 80%;
+	.carrusel {
+		width: 0px;
+		flex-grow: 1;
+		object-fit: cover;
+		opacity: .8;
+		transition: .5s ease;
+		&:hover {
+			width: 300px;
+			opacity: 1;
+			filter: contrast(120%);
+		}
+	}
+}
+.Footer{
+    grid-area: Footer;
+    background-color: $background-color_1;
+    text-align: center;
+
+    iframe{
+        width: 100%;
+    }
+
+	h3{
+		margin-bottom: 10px;
+	}
+
+    h3,h4,.NuestrasRedes{
+        font-size: 180%;
+        text-align:center;
+        margin: 10px 0px;
+		color: $color-letra;
+    }
+    
+    .Mail:visited,.Mail:active,.Mail:link,.IG:visited,.IG:active,.IG:link{
+        text-decoration: none;
+		color: $color-letra;
+    }
+}
